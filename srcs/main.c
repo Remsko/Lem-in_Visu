@@ -15,13 +15,16 @@
 int     main(int ac, char **av)
 {
 	t_visual    v;
+    t_env       e;
 
 	v.screen.width = WIN_W;
 	v.screen.height = WIN_H;
 	if (ac == 1)
 	{
+        if (parser_entry(&e) == FALSE)
+            return (1);
 		sdl_init(&v);
-		sdl_loop(&e, &v);
+		sdl_loop(&v);
 		sdl_destroy(&v);
 	}
 	else

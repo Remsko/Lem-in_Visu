@@ -8,11 +8,12 @@ LIBFT = libft/libft.a
 
 SRC_PATH = srcs/
 SRC_NAME = main.c /
-			sdl_destroy.c /
-			sdl_event.c /
-			sdl_fps.c /
-			sdl_init.c /
-			sdl_loop.c /
+			sdl/sdl_destroy.c /
+			sdl/sdl_event.c /
+			sdl/sdl_fps.c /
+			sdl/sdl_init.c /
+			sdl/sdl_loop.c /
+			parser/parser_entry.c /
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 

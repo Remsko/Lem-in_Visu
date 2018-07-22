@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visu.h                                             :+:      :+:    :+:   */
+/*   proto.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/22 14:59:38 by marvin            #+#    #+#             */
-/*   Updated: 2018/07/22 14:59:38 by marvin           ###   ########.fr       */
+/*   Created: 2018/07/22 15:27:10 by marvin            #+#    #+#             */
+/*   Updated: 2018/07/22 15:27:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VISU_H
-# define VISU_H
+#ifndef PROTO_H
+# define PROTO_H
 
-# include "libft.h"
-# include "SDL.h"
-# include "type.h"
-# include "proto.h"
+# include "visu.h"
 
-# define WIN_W 2000
-# define WIN_H 1500
+/* PARSER */
+
+t_bool  parser_entry(t_env *e);
+
+/* SDL */
+
+void	sdl_destroy(t_visual *v);
+
+void    sdl_draw(t_visual *v);
+
+void	sdl_event(t_events *e);
+
+void	sdl_fps(void);
+
+void    sdl_init(t_visual *v);
+
+void    sdl_loop(t_visual *v);
 
 #endif
