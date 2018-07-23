@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:04:23 by marvin            #+#    #+#             */
-/*   Updated: 2018/07/22 15:04:23 by marvin           ###   ########.fr       */
+/*   Updated: 2018/07/23 13:55:24 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	sdl_event(t_events *e)
 			e->options.exit = TRUE;
 		else if (event.key.keysym.sym == SDLK_ESCAPE)
 			e->options.exit = TRUE;
+		else if (event.key.keysym.sym == SDLK_UP)
+			e->options.draw = FALSE;
 		else
 			e->keys = SDL_GetKeyboardState(NULL);
 	}

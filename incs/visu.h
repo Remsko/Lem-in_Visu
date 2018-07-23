@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 14:59:38 by marvin            #+#    #+#             */
-/*   Updated: 2018/07/22 14:59:38 by marvin           ###   ########.fr       */
+/*   Updated: 2018/07/23 13:48:39 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "type.h"
 # include "proto.h"
 
-# define WIN_W 2000
-# define WIN_H 1500
+# define WIN_W 1500
+# define WIN_H 900
 
 #endif

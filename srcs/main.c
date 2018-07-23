@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:11:32 by marvin            #+#    #+#             */
-/*   Updated: 2018/07/22 15:11:32 by marvin           ###   ########.fr       */
+/*   Updated: 2018/07/23 13:45:26 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int     main(int ac, char **av)
 	t_visual    v;
     t_env       e;
 
+	(void)av;
 	v.screen.width = WIN_W;
 	v.screen.height = WIN_H;
 	if (ac == 1)

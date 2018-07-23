@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:08:23 by marvin            #+#    #+#             */
-/*   Updated: 2018/07/22 15:08:23 by marvin           ###   ########.fr       */
+/*   Updated: 2018/07/23 13:49:19 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		sdl(void)
 static void		window(t_visual *v)
 {
 	if ((v->window = SDL_CreateWindow(
-					"Wolf3D",
+					"Lem-in Visu",
 					SDL_WINDOWPOS_UNDEFINED,
 					SDL_WINDOWPOS_UNDEFINED,
 					v->screen.width,

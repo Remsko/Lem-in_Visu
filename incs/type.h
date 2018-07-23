@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:28:23 by marvin            #+#    #+#             */
-/*   Updated: 2018/07/22 15:28:23 by marvin           ###   ########.fr       */
+/*   Updated: 2018/07/23 13:48:16 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,13 @@ typedef struct          s_visual
 	SDL_Window          *window;
 	SDL_Renderer        *renderer;
 	SDL_Texture         *texture;
+	t_events			events;
 	t_screen            screen;
 }                       t_visual;
 
-typedef struct          s_env;
+typedef struct          s_env
 {
-
+	int	ants;
 }                       t_env;
 
 #endif
