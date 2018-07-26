@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:28:23 by marvin            #+#    #+#             */
-/*   Updated: 2018/07/23 13:48:16 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/07/26 20:55:14 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define TYPE_H
 
 # include "visu.h"
+
+typedef unsigned char   t_room_type;
 
 typedef struct          s_screen
 {
@@ -42,9 +44,25 @@ typedef struct          s_visual
 	t_screen            screen;
 }                       t_visual;
 
+typedef struct  s_coord
+{
+	int x;
+	int y;
+}               t_coord;
+
+typedef struct  s_room
+{
+	char            *name;
+	t_coord         pos;
+	t_room_type     type;
+}               t_room;
+
 typedef struct          s_env
 {
-	int	ants;
+	int					ants;
+	t_list				*anthill;
+	t_list				*room;
+	t_list				*links;
 }                       t_env;
 
 #endif

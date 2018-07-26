@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_entry.c                                     :+:      :+:    :+:   */
+/*   parser_links.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/22 15:24:46 by marvin            #+#    #+#             */
-/*   Updated: 2018/07/26 20:34:08 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/07/26 20:29:02 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/07/26 20:29:54 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-t_bool  parser_entry(t_env *e)
+t_bool	get_links(t_env *e, char **links)
 {
-	char *line;
-
-	if (get_ants(e, &line) == FALSE)
-		return (FALSE);
-	if (get_rooms(e, &line) == FALSE)
-		return (FALSE);
-	if (get_links(e, &line) == FALSE)
-		return (FALSE);
-    return (TRUE);
+	(void)e;
+	(void)links;
+	return (TRUE);
 }

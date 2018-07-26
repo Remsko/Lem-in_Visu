@@ -15,6 +15,9 @@ SRC_NAME = main.c \
 			sdl/sdl_loop.c \
 			sdl/sdl_draw.c \
 			parser/parser_entry.c \
+			parser/parser_ants.c \
+			parser/parser_rooms.c \
+			parser/parser_links.c \
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 
