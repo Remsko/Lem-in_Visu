@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:27:10 by marvin            #+#    #+#             */
-/*   Updated: 2018/07/26 20:34:36 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/07/26 21:32:24 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,15 @@ void	sdl_fps(void);
 void    sdl_init(t_visual *v);
 
 void    sdl_loop(t_visual *v);
+
+/* DEL */
+
+void	garbage_collector(t_env *e);
+
+void    del_str(void *content, size_t content_size);
+
+void    del_nothing(void *content, size_t content_size);
+
+void    del_room(void *content, size_t content_size);
 
 #endif
