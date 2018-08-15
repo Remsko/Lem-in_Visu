@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 21:29:47 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/07/26 21:36:13 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/08/15 17:22:09 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_room   *find_room(t_list *room, char *name)
 	return (NULL);
 }
 
-static t_bool   add_links(t_list **room, t_list **links, char *line)
+static t_bool   add_links(t_list **room, char *line)
 {
 	char    **split;
 	t_room  *room1;
@@ -53,22 +53,19 @@ static t_bool   add_links(t_list **room, t_list **links, char *line)
 			|| (room2 = find_room(*room, split[1])) == NULL)
 		ret = FALSE;
 	else
-	{
-		ft_lstadd(links, ft_lstnew(room2, 0));
-		ft_lstadd(links, ft_lstnew(room1, 0));
-	}
+		ft_lstadd(&room1->links, ft_lstnew(room2, 0));
 	ft_deltab(split, 0);
 	return (ret);
 }
 
 t_bool          get_links(t_env *e, char **line)
 {
-	if (add_links(&e->room, &e->links, *line) == FALSE)
+	if (add_links(&e->room,  *line) == FALSE)
 		return (FALSE);
 	while (get_next_line(0, line) > 0)
 	{
 		ft_lstadd(&e->anthill, ft_lstnew((void *)*line, 0));
-		if (*line[0] != '#' && add_links(&e->room, &e->links, *line) == FALSE)
+		if (*line[0] != '#' && add_links(&e->room, *line) == FALSE)
 			break ;
 	}
 	return (TRUE);

@@ -20,6 +20,8 @@ SRC_NAME = main.c \
 			parser/parser_links.c \
 			del/garbage_collector.c \
 			del/del.c \
+			draw/draw_circle.c \
+			draw/draw_fill_circle.c \
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 
@@ -42,6 +44,7 @@ $(OBJ_PATH):
 	mkdir -p $(OBJ_PATH)sdl
 	mkdir -p $(OBJ_PATH)parser
 	mkdir -p $(OBJ_PATH)del
+	mkdir -p $(OBJ_PATH)draw
 
 $(NAME): $(LIBFT) $(OBJ_PATH) $(OBJ)
 	$(CC) $(LDFLAGS) $(LDLIBS) $(OBJ) -o $(NAME)

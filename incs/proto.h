@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proto.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:27:10 by marvin            #+#    #+#             */
-/*   Updated: 2018/07/26 21:32:24 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/08/15 17:09:47 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_bool  get_links(t_env *e, char **line);
 
 void	sdl_destroy(t_visual *v);
 
-void    sdl_draw(t_visual *v);
+void    sdl_draw(t_env *e, t_visual *v);
 
 void	sdl_event(t_events *e);
 
@@ -37,7 +37,7 @@ void	sdl_fps(void);
 
 void    sdl_init(t_visual *v);
 
-void    sdl_loop(t_visual *v);
+void    sdl_loop(t_env *e, t_visual *v);
 
 /* DEL */
 
@@ -48,5 +48,11 @@ void    del_str(void *content, size_t content_size);
 void    del_nothing(void *content, size_t content_size);
 
 void    del_room(void *content, size_t content_size);
+
+/* DRAW */
+
+void draw_circle(t_visual *v, int x0, int y0, int r);
+
+void draw_fill_circle(t_visual *v, int x0, int y0, int r);
 
 #endif

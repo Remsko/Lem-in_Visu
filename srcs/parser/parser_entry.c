@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_entry.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:24:46 by marvin            #+#    #+#             */
-/*   Updated: 2018/07/26 20:34:08 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/08/15 11:51:02 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ t_bool  parser_entry(t_env *e)
 		return (FALSE);
 	if (get_links(e, &line) == FALSE)
 		return (FALSE);
+	ft_lstrev(&e->anthill);
     return (TRUE);
 }

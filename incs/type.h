@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:28:23 by marvin            #+#    #+#             */
-/*   Updated: 2018/07/26 21:31:57 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/08/15 17:22:21 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct  s_coord
 
 typedef struct  s_room
 {
+	t_list			*links;
 	char            *name;
 	t_coord         pos;
 	t_room_type     type;
@@ -62,7 +63,6 @@ typedef struct          s_env
 	int					ants;
 	t_list				*anthill;
 	t_list				*room;
-	t_list				*links;
 }                       t_env;
 
 #endif
