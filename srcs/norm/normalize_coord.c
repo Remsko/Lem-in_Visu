@@ -44,14 +44,8 @@ void normalize_coord(t_list *room)
     while (room != NULL)
     {
         pos = &((t_room *)room->content)->pos;
-        pos->x = ((double)(pos->x - ext.min.x) / (double)(ext.max.x - ext.min.x)) * (double)(WIN_W - 1);
-        pos->y = ((double)(pos->y - ext.min.y) / (double)(ext.max.y - ext.min.y)) * (double)(WIN_H - 1);
-//       printf("x = %d\n", ((t_room *)room->content)->pos.x);
-//        printf("y = %d\n", ((t_room *)room->content)->pos.y);
+        pos->x = WIN_W / 10 + ((double)(pos->x - ext.min.x) / (double)(ext.max.x - ext.min.x)) * (double)(WIN_W - (WIN_W / 10 * 2));
+        pos->y = WIN_H / 10 + ((double)(pos->y - ext.min.y) / (double)(ext.max.y - ext.min.y)) * (double)(WIN_H - (WIN_H / 10 * 2));
         room = room->next;
     }
-//    printf("min x = %d\n", ext.min.x);
- //   printf("min y = %d\n", ext.min.y);
-  //  printf("max x = %d\n", ext.max.x);
-   // printf("max y = %d\n", ext.max.y);
 }
