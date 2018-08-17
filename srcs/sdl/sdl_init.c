@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:08:23 by marvin            #+#    #+#             */
-/*   Updated: 2018/07/23 13:49:19 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/08/17 15:35:35 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void		window(t_visual *v)
 					v->screen.height,
 					0)) == NULL)
 	{
-        SDL_Log("Unable to create window: %s", SDL_GetError());
+		SDL_Log("Unable to create window: %s", SDL_GetError());
 		exit(-2);
 	}
 }
@@ -42,7 +42,7 @@ static void		image(t_visual *v)
 					-1,
 					SDL_RENDERER_SOFTWARE)) == NULL)
 	{
-        SDL_Log("Unable to create renderer: %s", SDL_GetError());
+		SDL_Log("Unable to create renderer: %s", SDL_GetError());
 		exit(-3);
 	}
 }

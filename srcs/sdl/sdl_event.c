@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:04:23 by marvin            #+#    #+#             */
-/*   Updated: 2018/08/15 13:01:50 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/08/17 15:37:38 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	sdl_event(t_events *e)
 {
-	SDL_Event   event;
+	SDL_Event	event;
 
 	while (SDL_PollEvent(&event))
 	{

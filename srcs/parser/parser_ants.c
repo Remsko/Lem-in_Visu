@@ -6,13 +6,13 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 20:18:11 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/07/26 20:34:59 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/08/17 15:32:08 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-t_bool  get_ants(t_env *e, char **line)
+t_bool	get_ants(t_env *e, char **line)
 {
 	if (get_next_line(0, line) != 1)
 		return (FALSE);

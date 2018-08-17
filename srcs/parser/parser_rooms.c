@@ -6,13 +6,13 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 20:28:04 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/07/26 21:45:32 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/08/17 15:28:03 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-static t_room_type  get_room_type(char *line)
+static t_room_type	get_room_type(char *line)
 {
 	if (ft_strcmp(line, "##start") == 0)
 		return (START);
@@ -21,7 +21,7 @@ static t_room_type  get_room_type(char *line)
 	return (BASIC);
 }
 
-static t_bool       same_room(t_list *room, t_room *new)
+static t_bool		same_room(t_list *room, t_room *new)
 {
 	t_room *tmp;
 
@@ -41,7 +41,7 @@ static t_bool       same_room(t_list *room, t_room *new)
 	return (FALSE);
 }
 
-static t_room       init_room(char *split, t_coord pos, t_room_type type)
+static t_room		init_room(char *split, t_coord pos, t_room_type type)
 {
 	t_room room;
 
@@ -51,12 +51,12 @@ static t_room       init_room(char *split, t_coord pos, t_room_type type)
 	return (room);
 }
 
-static t_bool       add_room(t_env *e, char *line, t_room_type type)
+static t_bool		add_room(t_env *e, char *line, t_room_type type)
 {
-	t_room  *new;
-	char    **split;
-	t_coord pos;
-	t_bool  ret;
+	t_room	*new;
+	char	**split;
+	t_coord	pos;
+	t_bool	ret;
 
 	new = NULL;
 	ret = TRUE;
@@ -80,10 +80,10 @@ static t_bool       add_room(t_env *e, char *line, t_room_type type)
 	return (ret);
 }
 
-t_bool              get_rooms(t_env *e, char **line)
+t_bool				get_rooms(t_env *e, char **line)
 {
 	t_room_type type;
-	int         mark;
+	int			mark;
 
 	type = BASIC;
 	mark = 0;

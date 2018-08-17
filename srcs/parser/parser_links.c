@@ -6,13 +6,13 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 21:29:47 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/08/15 17:22:09 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/08/17 15:29:08 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-t_bool   same_link(t_list *link, t_room *room)
+t_bool			same_link(t_list *link, t_room *room)
 {
 	while (link)
 	{
@@ -23,7 +23,7 @@ t_bool   same_link(t_list *link, t_room *room)
 	return (FALSE);
 }
 
-static t_room   *find_room(t_list *room, char *name)
+static t_room	*find_room(t_list *room, char *name)
 {
 	t_room *tmp;
 
@@ -39,12 +39,12 @@ static t_room   *find_room(t_list *room, char *name)
 	return (NULL);
 }
 
-static t_bool   add_links(t_list **room, char *line)
+static t_bool	add_links(t_list **room, char *line)
 {
-	char    **split;
-	t_room  *room1;
-	t_room  *room2;
-	t_bool  ret;
+	char	**split;
+	t_room	*room1;
+	t_room	*room2;
+	t_bool	ret;
 
 	ret = TRUE;
 	split = ft_strsplit(line, '-');
@@ -58,9 +58,9 @@ static t_bool   add_links(t_list **room, char *line)
 	return (ret);
 }
 
-t_bool          get_links(t_env *e, char **line)
+t_bool			get_links(t_env *e, char **line)
 {
-	if (add_links(&e->room,  *line) == FALSE)
+	if (add_links(&e->room, *line) == FALSE)
 		return (FALSE);
 	while (get_next_line(0, line) > 0)
 	{
