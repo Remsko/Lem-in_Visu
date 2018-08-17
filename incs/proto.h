@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:27:10 by marvin            #+#    #+#             */
-/*   Updated: 2018/08/15 17:09:47 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/08/17 11:18:41 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,9 @@ void    del_room(void *content, size_t content_size);
 void draw_circle(t_visual *v, int x0, int y0, int r);
 
 void draw_fill_circle(t_visual *v, int x0, int y0, int r);
+
+void draw_line(t_visual *v, int x1, int y1, int x2, int y2);
+
+void draw_all(t_env *e, t_visual *v);
 
 #endif

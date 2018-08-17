@@ -6,58 +6,55 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 17:05:25 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/08/15 17:05:26 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/08/17 10:43:13 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-void draw_fill_circle(t_visual *v, int x0, int y0, int r)
+static void fill_loop(t_visual *v, t_coord *pos, int x0, int y0)
 {
-    // BRUTEFORCE
-    /*
-    int r2 = r * r;
-    int area = r2 << 2;
-    int rr = r << 1;
+    int i;
 
-    SDL_SetRenderDrawColor(v->renderer, rand() % 255, rand() % 255, rand() % 255, 255);
-    for (int i = 0; i < area; i++)
+    i = x0 - pos->x;
+    while (i <= x0 + pos->x)
     {
-    int tx = (i % rr) - r;
-    int ty = (i / rr) - r;
-
-    if (tx * tx + ty * ty <= r2)
-        SDL_RenderDrawPoint(v->renderer, x0 + tx, y0 + ty);
+        SDL_RenderDrawPoint(v->renderer, i, y0 + pos->y);
+        SDL_RenderDrawPoint(v->renderer, i, y0 - pos->y);
+        ++i;
     }
-    */
-    // Bresenham's algorithm
-    int x = r;
-    int y = 0;
-    int xChange = 1 - (r << 1);
-    int yChange = 0;
-    int radiusError = 0;
-
-    SDL_SetRenderDrawColor(v->renderer, rand() % 255, rand() % 255, rand() % 255, 255);
-    while (x >= y)
+    i = x0 - pos->y;
+    while (i <= x0 + pos->y)
     {
-        for (int i = x0 - x; i <= x0 + x; i++)
+        SDL_RenderDrawPoint(v->renderer, i, y0 + pos->x);
+        SDL_RenderDrawPoint(v->renderer, i, y0 - pos->x);
+        ++i;
+    }
+}
+
+void        draw_fill_circle(t_visual *v, int x0, int y0, int r)
+{
+    t_coord pos;
+    t_coord change;
+    int     radiusError;
+
+    pos.x = r;
+    pos.y = 0;
+    change.x = 1 - (r << 1);
+    change.y = 0;
+    radiusError = 0;
+    SDL_SetRenderDrawColor(v->renderer, rand() % 255, rand() % 255, rand() % 255, 255);
+    while (pos.x >= pos.y)
+    {
+        fill_loop(v, &pos, x0, y0);
+        ++pos.y;
+        radiusError += change.y;
+        change.y += 2;
+        if (((radiusError << 1) + change.x) > 0)
         {
-            SDL_RenderDrawPoint(v->renderer, i, y0 + y);
-            SDL_RenderDrawPoint(v->renderer, i, y0 - y);
-        }
-        for (int i = x0 - y; i <= x0 + y; i++)
-        {
-            SDL_RenderDrawPoint(v->renderer, i, y0 + x);
-            SDL_RenderDrawPoint(v->renderer, i, y0 - x);
-        }
-        y++;
-        radiusError += yChange;
-        yChange += 2;
-        if (((radiusError << 1) + xChange) > 0)
-        {
-            x--;
-            radiusError += xChange;
-            xChange += 2;
+            --pos.x;
+            radiusError += change.x;
+            change.x += 2;
         }
     }
 }

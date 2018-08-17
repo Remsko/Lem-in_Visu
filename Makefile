@@ -20,7 +20,9 @@ SRC_NAME = main.c \
 			parser/parser_links.c \
 			del/garbage_collector.c \
 			del/del.c \
+			draw/draw_all.c \
 			draw/draw_circle.c \
+			draw/draw_line.c \
 			draw/draw_fill_circle.c \
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
