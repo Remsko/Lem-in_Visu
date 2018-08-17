@@ -24,6 +24,7 @@ SRC_NAME = main.c \
 			draw/draw_circle.c \
 			draw/draw_line.c \
 			draw/draw_fill_circle.c \
+			norm/normalize_coord.c \
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 
@@ -47,6 +48,7 @@ $(OBJ_PATH):
 	mkdir -p $(OBJ_PATH)parser
 	mkdir -p $(OBJ_PATH)del
 	mkdir -p $(OBJ_PATH)draw
+	mkdir -p $(OBJ_PATH)norm
 
 $(NAME): $(LIBFT) $(OBJ_PATH) $(OBJ)
 	$(CC) $(LDFLAGS) $(LDLIBS) $(OBJ) -o $(NAME)

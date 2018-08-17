@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:11:32 by marvin            #+#    #+#             */
-/*   Updated: 2018/08/17 10:16:13 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/08/17 12:40:26 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int     main(int ac, char **av)
         	ft_putendl("ERROR");
 			return (1);
 		}
+		normalize_coord(e.room);
 		sdl_init(&v);
 		sdl_loop(&e, &v);
 		sdl_destroy(&v);

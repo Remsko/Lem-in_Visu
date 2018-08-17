@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 11:03:47 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/08/17 11:46:28 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/08/17 14:22:29 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void draw_links(t_list *room, t_visual *v)
 {
-    t_list  *links;
     t_room  *room1;
     t_room  *room2;
+    t_list  *links;
     t_coord pos1;
     t_coord pos2;
 
@@ -29,7 +29,14 @@ static void draw_links(t_list *room, t_visual *v)
         {
             room2 = (t_room *)links->content; 
             pos2 = room2->pos;
-            draw_line(v, pos1.x * (WIN_W / 2), pos1.y * (WIN_H / 2), pos2.x * (WIN_W / 2), pos2.y * (WIN_H / 2));
+            SDL_RenderDrawLine(v->renderer, pos1.x - 1, pos1.y, pos2.x, pos2.y);
+            SDL_RenderDrawLine(v->renderer, pos1.x + 1, pos1.y, pos2.x, pos2.y);
+            SDL_RenderDrawLine(v->renderer, pos1.x, pos1.y + 1, pos2.x, pos2.y);
+            SDL_RenderDrawLine(v->renderer, pos1.x, pos1.y - 1, pos2.x, pos2.y);
+            SDL_RenderDrawLine(v->renderer, pos1.x, pos1.y, pos2.x + 1, pos2.y);
+            SDL_RenderDrawLine(v->renderer, pos1.x, pos1.y, pos2.x - 1, pos2.y);
+            SDL_RenderDrawLine(v->renderer, pos1.x, pos1.y, pos2.x, pos2.y + 1);
+            SDL_RenderDrawLine(v->renderer, pos1.x, pos1.y, pos2.x, pos2.y - 1);
             links = links->next;
         }
         room = room->next;
@@ -43,14 +50,17 @@ static void draw_rooms(t_list *room, t_visual *v)
     while (room != NULL)
     {
         tmp = (t_room *)room->content;
-        draw_fill_circle(v, tmp->pos.x * (WIN_W / 2), tmp->pos.y * (WIN_H / 2), 102);
-        draw_fill_circle(v, tmp->pos.x * (WIN_W / 2), tmp->pos.y * (WIN_H / 2), 100);
+        SDL_SetRenderDrawColor(v->renderer, 255, 255, 255, 255);
+        draw_fill_circle(v, tmp->pos.x, tmp->pos.y, 20);
+        SDL_SetRenderDrawColor(v->renderer, 115, 194, 251, 255);
+        draw_fill_circle(v, tmp->pos.x, tmp->pos.y, 18);
         room = room->next;
     }
 }
 
-void        draw_all(t_env *e, t_visual *v)
+void draw_all(t_env *e, t_visual *v)
 {
+    SDL_SetRenderDrawColor(v->renderer, 155, 155, 155, 255);
     draw_links(e->room, v);
     draw_rooms(e->room, v);
 }

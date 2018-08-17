@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:28:23 by marvin            #+#    #+#             */
-/*   Updated: 2018/08/15 17:22:21 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/08/17 13:29:22 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ typedef struct  s_coord
 	int x;
 	int y;
 }               t_coord;
+
+typedef struct	s_extremum
+{
+	t_coord min;
+	t_coord max;
+}				t_extremum;
 
 typedef struct  s_room
 {
