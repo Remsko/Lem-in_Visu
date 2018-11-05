@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:11:32 by marvin            #+#    #+#             */
-/*   Updated: 2018/08/17 15:34:20 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/10/18 14:44:20 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,17 @@ int		main(int ac, char **av)
 			return (1);
 		}
 		normalize_coord(e.room);
+		///*
 		sdl_init(&v);
 		sdl_loop(&e, &v);
 		sdl_destroy(&v);
+		//*/
+		t_list *tmp = e.anthill;
+		while (tmp != NULL)
+		{
+			printf("%s\n", (char *)tmp->content);
+			tmp = tmp->next;
+		}
 		garbage_collector(&e);
 	}
 	else

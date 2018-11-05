@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:28:23 by marvin            #+#    #+#             */
-/*   Updated: 2018/08/17 15:23:44 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/05 13:07:34 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct			s_extremum
 	t_coord				max;
 }						t_extremum;
 
+
+
 typedef struct			s_room
 {
 	t_list				*links;
@@ -64,11 +66,19 @@ typedef struct			s_room
 	t_room_type			type;
 }						t_room;
 
+typedef struct			s_ant
+{
+	int					nb;
+	t_room				*prev;
+	t_room				*next;
+}						t_ant;
+
 typedef struct			s_env
 {
 	int					ants;
 	t_list				*anthill;
 	t_list				*room;
+	t_list				*runs;
 }						t_env;
 
 #endif

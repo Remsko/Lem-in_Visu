@@ -18,6 +18,7 @@ SRC_NAME = main.c \
 			parser/parser_ants.c \
 			parser/parser_rooms.c \
 			parser/parser_links.c \
+			parser/parser_runs.c \
 			del/garbage_collector.c \
 			del/del.c \
 			draw/draw_all.c \

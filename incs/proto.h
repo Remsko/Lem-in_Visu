@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:27:10 by marvin            #+#    #+#             */
-/*   Updated: 2018/08/17 15:20:00 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/10/17 13:05:17 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ t_bool	get_ants(t_env *e, char **line);
 t_bool	get_rooms(t_env *e, char **line);
 
 t_bool	get_links(t_env *e, char **line);
+
+t_bool  get_runs(t_env *e, char **line);
 
 /* SDL */
 

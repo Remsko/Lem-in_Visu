@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_entry.c                                     :+:      :+:    :+:   */
+/*   parser_runs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/22 15:24:46 by marvin            #+#    #+#             */
-/*   Updated: 2018/10/17 13:07:05 by rpinoit          ###   ########.fr       */
+/*   Created: 2018/10/17 13:02:54 by rpinoit           #+#    #+#             */
+/*   Updated: 2018/11/05 16:11:41 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-t_bool	parser_entry(t_env *e)
-{
-	char *line;
+/*
+** Blank line or parsing error break the last read
+*/
 
-	if (get_ants(e, &line) == FALSE)
-		return (FALSE);
-	if (get_rooms(e, &line) == FALSE)
-		return (FALSE);
-	if (get_links(e, &line) == FALSE)
-		return (FALSE);
-	if (get_runs(e, &line) == FALSE)
-		return (FALSE);
-	ft_lstrev(&e->anthill);
+t_bool  get_runs(t_env *e, char **line)
+{
+    while (get_next_line(0, line) > 0)
+	{
+		ft_lstadd(&e->anthill, ft_lstnew((void *)*line, 0));
+		/* split line space */
+		/* add ant to list till split finished */
+		/* add ant list to run list */
+
+	}
 	return (TRUE);
 }
