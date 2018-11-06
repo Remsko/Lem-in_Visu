@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:11:32 by marvin            #+#    #+#             */
-/*   Updated: 2018/10/18 14:44:20 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/06 16:54:47 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		main(int ac, char **av)
 		sdl_loop(&e, &v);
 		sdl_destroy(&v);
 		//*/
-		t_list *tmp = e.anthill;
+		t_list *tmp = e.runs;
 		while (tmp != NULL)
 		{
 			printf("%s\n", (char *)tmp->content);
