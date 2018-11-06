@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 13:02:54 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/11/06 17:51:22 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/06 18:03:39 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@ t_ant	*get_ant(t_list *ant_tmp, char *split)
 {
 	t_ant *ant;
 
-	ant = NULL;
-	(void)split;
+	if ((ant = (t_ant *)malloc(sizeof(t_ant))) == NULL)
+		return (NULL);
+	ant->nb = ft_atoi(split + 1);
+	if (ant_tmp == NULL || (ant->prev = search_prev(ant_tmp, ant->nb)) == NULL)
+		ant->prev = get_start(room);
+	if ((ant->next = search_room(ft_strchr(split, '-') + 1)) == NULL)
+		return (NULL);
 	return (ant);
 }
 
@@ -39,11 +44,11 @@ t_list	*get_antlist(t_list *ant_tmp, char *line)
 	while (split[i] != NULL)
 	{
 		if ((new_ant = get_ant(ant_tmp, split[i])) == NULL)
-			return (NULL)
+			return (NULL);
 		ft_lstadd(&ant_list, ft_lstnew((void *)new_ant, 0));
 		i++;
 	}
-	ft_deltab(split);
+	ft_deltab(split, 0);
 	return (ant_list);
 }
 
