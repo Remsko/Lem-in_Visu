@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 21:29:47 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/08/17 15:29:08 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/07 13:11:46 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_bool			same_link(t_list *link, t_room *room)
 {
-	while (link)
+	while (link != NULL)
 	{
 		if ((t_room*)link->content == room)
 			return (TRUE);

@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:24:46 by marvin            #+#    #+#             */
-/*   Updated: 2018/10/17 13:07:05 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/07 13:28:51 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_bool	parser_entry(t_env *e)
 		return (FALSE);
 	if (get_runs(e, &line) == FALSE)
 		return (FALSE);
+	ft_lstrev(&e->runs);
 	ft_lstrev(&e->anthill);
 	return (TRUE);
 }

@@ -6,15 +6,11 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 13:02:54 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/11/07 11:50:59 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/07 13:28:39 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
-
-/*
-** Blank line or parsing error break the last read
-*/
 
 t_room	*find_prev(t_list *ant_list, t_ant *actual)
 {
@@ -30,18 +26,53 @@ t_room	*find_prev(t_list *ant_list, t_ant *actual)
 	return (NULL);
 }
 
+t_room	*find_start(t_list *room)
+{
+	t_room *tmp;
+
+	while (room != NULL)
+	{
+		tmp = (t_room *)room->content;
+		if (tmp->type == START)
+			return (tmp);
+		room = room->next;
+	}
+	return (NULL);
+}
+
+t_room	*find_room(t_list *room, char *name)
+{
+	t_room *tmp;
+
+	if (name == NULL)
+		return (NULL);
+	while (room != NULL)
+	{
+		tmp = (t_room *)room->content;
+		if (ft_strcmp(tmp->name, name) == 0)
+			return (tmp);
+		room = room->next;
+	}
+	return (NULL);
+}
+
 t_ant	*get_ant(t_list *room, t_list *prev, char *split)
 {
 	t_ant *ant;
 
-	(void)room;
-	(void)ant_tmp;
-	(void)split;
 	if ((ant = (t_ant *)malloc(sizeof(t_ant))) == NULL)
 		return (NULL);
-	//ant->nb = /* split 1 */;
+	ant->nb = ft_atoi(split + 1);
 	ant->prev = find_prev(prev, ant);
-	//ant->next = /* find room split 2 */;
+	ant->next = find_room(room, ft_strchr(split, '-') + 1);
+	if (ant->prev == NULL)
+		ant->prev = find_start(room);
+	if (ant->next == NULL)
+	{
+		ft_putendl(split);
+		ft_memdel((void**)&ant);
+		return (NULL);
+	}
 	return (ant);
 }
 

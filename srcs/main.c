@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:11:32 by marvin            #+#    #+#             */
-/*   Updated: 2018/11/06 16:54:47 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/07 13:23:20 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,13 @@ int		main(int ac, char **av)
 		t_list *tmp = e.runs;
 		while (tmp != NULL)
 		{
-			printf("%s\n", (char *)tmp->content);
+			t_list *tmp2 = (t_list *)tmp->content;
+			while (tmp2 != NULL)
+			{
+				printf("%d ", (int)(((t_ant *)(tmp2->content))->nb));
+				tmp2 = tmp2->next;
+			}
+			printf("\n");
 			tmp = tmp->next;
 		}
 		garbage_collector(&e);
