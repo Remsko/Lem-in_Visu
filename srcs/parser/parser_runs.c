@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 13:02:54 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/11/07 13:28:39 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/07 18:21:55 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ t_ant	*get_ant(t_list *room, t_list *prev, char *split)
 		ft_memdel((void**)&ant);
 		return (NULL);
 	}
+	ant->color = (t_color){rand() % 255, rand() % 255, rand() % 255};
 	return (ant);
 }
 

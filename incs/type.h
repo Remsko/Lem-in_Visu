@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:28:23 by marvin            #+#    #+#             */
-/*   Updated: 2018/11/07 13:47:05 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/07 18:22:44 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,24 @@ typedef struct			s_coord
 	int					y;
 }						t_coord;
 
+typedef struct			s_fcoord
+{
+	float				x;
+	float				y;
+}						t_fcoord;
+
 typedef struct			s_extremum
 {
 	t_coord				min;
 	t_coord				max;
 }						t_extremum;
 
-
+typedef struct			s_color
+{
+	float r;
+	float g;
+	float b;
+}						t_color;
 
 typedef struct			s_room
 {
@@ -71,6 +82,8 @@ typedef struct			s_ant
 	int					nb;
 	t_room				*prev;
 	t_room				*next;
+	t_fcoord			actual;
+	t_color				color;
 }						t_ant;
 
 typedef struct			s_env
