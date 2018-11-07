@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 21:26:07 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/11/07 13:32:58 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/07 13:56:21 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,19 @@ void	del_room(void *content, size_t content_size)
 	ft_lstdel(&tmp->links, &del_nothing);
 	ft_strdel(&tmp->name);
 	free(content);
+}
+
+void	del_ant(void *content, size_t content_size)
+{
+	(void)content_size;
+	free(content);
+}
+
+void	del_runs(void *content, size_t content_size)
+{
+	t_list	*tmp;
+
+	(void)content_size;
+	tmp = (t_list*)content;
+	ft_lstdel(&tmp, &del_ant);
 }
