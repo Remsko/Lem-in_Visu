@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 13:02:54 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/11/08 14:00:02 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/08 17:09:31 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,9 @@ t_ant	*get_ant(t_list *room, t_list *prev, char *split)
 		return (NULL);
 	ant->nb = ft_atoi(split + 1);
 	same = find_prev(prev, ant);
-	printf("prev= %d ; actual= %d\n", same ? same->nb : 0, ant->nb);
 	ant->prev = same != NULL ? same->next : find_start(room);
 	ant->next = find_room(room, ft_strchr(split, '-') + 1);
-	if (ant->next == NULL)
+	if (ant->prev == NULL || ant->next == NULL)
 	{
 		ft_putendl(split);
 		ft_memdel((void**)&ant);

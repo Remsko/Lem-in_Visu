@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 11:03:47 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/11/07 14:37:42 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/08 17:47:29 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,27 @@ static void draw_rooms(t_list *room, t_visual *v)
     }
 }
 
+static void	draw_ants(t_visual *v, t_list *run)
+{
+	t_ant	*ant;
+
+	while (run != NULL)
+	{
+		ant = (t_ant *)run->content;
+		SDL_SetRenderDrawColor(v->renderer, ant->color.r, ant->color.g, ant->color.b, 255);
+		draw_fill_circle(v, ant->actual.x, ant->actual.y, 5);
+		run = run->next;
+	}
+}
+
 void draw_all(t_env *e, t_visual *v)
 {
     SDL_SetRenderDrawColor(v->renderer, 82, 85, 100, 255);
-    draw_links(e->room, v);
-    draw_rooms(e->room, v);
+    if (e->room != NULL)
+    {
+        draw_links(e->room, v);
+        draw_rooms(e->room, v);
+    }
+    if (e->actual_run != NULL)
+        draw_ants(v, (t_list *)e->actual_run->content);
 }

@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:28:23 by marvin            #+#    #+#             */
-/*   Updated: 2018/11/07 18:22:44 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/08 17:35:03 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ typedef struct			s_extremum
 
 typedef struct			s_color
 {
-	float r;
-	float g;
-	float b;
+	unsigned char r;
+	unsigned char g;
+	unsigned char b;
 }						t_color;
 
 typedef struct			s_room
@@ -92,6 +92,7 @@ typedef struct			s_env
 	t_list				*anthill;
 	t_list				*room;
 	t_list				*runs;
+	t_list				*actual_run;
 }						t_env;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:27:10 by marvin            #+#    #+#             */
-/*   Updated: 2018/11/07 13:54:13 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/08 17:12:14 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ void	sdl_fps(void);
 void	sdl_init(t_visual *v);
 
 void	sdl_loop(t_env *e, t_visual *v);
+
+void    sdl_wait(unsigned int wait);
+
+double  sdl_frametime(void);
 
 /* DEL */
 

@@ -14,6 +14,7 @@ SRC_NAME = main.c \
 			sdl/sdl_init.c \
 			sdl/sdl_loop.c \
 			sdl/sdl_draw.c \
+			sdl/sdl_utils.c \
 			parser/parser_entry.c \
 			parser/parser_ants.c \
 			parser/parser_rooms.c \
