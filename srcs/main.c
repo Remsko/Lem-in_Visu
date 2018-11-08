@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:11:32 by marvin            #+#    #+#             */
-/*   Updated: 2018/11/07 13:23:20 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/08 11:30:50 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		main(int ac, char **av)
 		sdl_loop(&e, &v);
 		sdl_destroy(&v);
 		//*/
+		/*
 		t_list *tmp = e.runs;
 		while (tmp != NULL)
 		{
@@ -46,6 +47,7 @@ int		main(int ac, char **av)
 			printf("\n");
 			tmp = tmp->next;
 		}
+		*/
 		garbage_collector(&e);
 	}
 	else

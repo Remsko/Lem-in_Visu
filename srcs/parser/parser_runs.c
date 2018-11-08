@@ -6,13 +6,13 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 13:02:54 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/11/07 18:21:55 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/08 14:00:02 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-t_room	*find_prev(t_list *ant_list, t_ant *actual)
+t_ant	*find_prev(t_list *ant_list, t_ant *actual)
 {
 	t_ant	*ant;
 
@@ -20,7 +20,7 @@ t_room	*find_prev(t_list *ant_list, t_ant *actual)
 	{
 		ant = (t_ant *)ant_list->content;
 		if (ant->nb == actual->nb)
-			return (ant->next);
+			return (ant);
 		ant_list = ant_list->next;
 	}
 	return (NULL);
@@ -59,21 +59,22 @@ t_room	*find_room(t_list *room, char *name)
 t_ant	*get_ant(t_list *room, t_list *prev, char *split)
 {
 	t_ant *ant;
+	t_ant *same;
 
 	if ((ant = (t_ant *)malloc(sizeof(t_ant))) == NULL)
 		return (NULL);
 	ant->nb = ft_atoi(split + 1);
-	ant->prev = find_prev(prev, ant);
+	same = find_prev(prev, ant);
+	printf("prev= %d ; actual= %d\n", same ? same->nb : 0, ant->nb);
+	ant->prev = same != NULL ? same->next : find_start(room);
 	ant->next = find_room(room, ft_strchr(split, '-') + 1);
-	if (ant->prev == NULL)
-		ant->prev = find_start(room);
 	if (ant->next == NULL)
 	{
 		ft_putendl(split);
 		ft_memdel((void**)&ant);
 		return (NULL);
 	}
-	ant->color = (t_color){rand() % 255, rand() % 255, rand() % 255};
+	ant->color = same != NULL ? same->color : (t_color){rand() % 255, rand() % 255, rand() % 255};
 	return (ant);
 }
 
