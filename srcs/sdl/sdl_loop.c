@@ -6,31 +6,18 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:09:24 by marvin            #+#    #+#             */
-/*   Updated: 2018/11/08 17:51:43 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/08 18:05:08 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-void	init_run(t_list	*run)
-{
-	t_ant	*ant;
-
-	while (run != NULL)
-	{
-		ant = run->content;
-		ant->actual.x = (float)ant->prev->pos.x;
-		ant->actual.y = (float)ant->prev->pos.y;
-		run = run->next;
-	}
-}
-
-float lerp(float a, float b, float f)
+static inline float	lerp(float a, float b, float f)
 {
     return (a + f * (b - a));
 }
 
-int	forward_ants(t_list	*run)
+static int			forward_ants(t_list	*run)
 {
 	static float	delta_time = 0;
 	t_ant			*ant;
@@ -45,17 +32,15 @@ int	forward_ants(t_list	*run)
 	delta_time += 0.005;
 	if (delta_time > 1)
 	{
-		delta_time = 0;
+		delta_time = 0.0;
 		sdl_wait(100);
 	}
-	return (!delta_time);
+	return (delta_time == 0.0 ? 1 : 0);
 }
 
-void	sdl_loop(t_env *e, t_visual *v)
+void				sdl_loop(t_env *e, t_visual *v)
 {
 	e->actual_run = e->runs;
-	ft_bzero(&v->events, sizeof(t_events));
-	init_run((t_list *)e->actual_run->content);
 	v->events.options.draw = TRUE;
 	while (v->events.options.exit == FALSE)
 	{

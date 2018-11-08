@@ -6,21 +6,22 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:11:32 by marvin            #+#    #+#             */
-/*   Updated: 2018/11/08 17:42:46 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/08 18:02:34 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_visual	v;
 	t_env		e;
 
 	(void)av;
+	ft_bzero(&e, sizeof(t_env));
+	ft_bzero(&v, sizeof(t_visual));
 	v.screen.width = WIN_W;
 	v.screen.height = WIN_H;
-	ft_bzero(&e, sizeof(t_env));
 	if (ac == 1)
 	{
 		if (parser_entry(&e) == FALSE)
