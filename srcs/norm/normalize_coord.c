@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/17 12:00:18 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/08/31 11:01:07 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/09 10:43:43 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	normalize_coord(t_list *room)
 	t_coord		*pos;
 
 	ext.min.x = 0x7FFFFFFF;
-	ext.min.x = 0x7FFFFFFF;
+	ext.min.y = 0x7FFFFFFF;
 	ext.max.x = -0x7FFFFFFF;
 	ext.max.y = -0x7FFFFFFF;
 	get_extremum(room, &ext);
