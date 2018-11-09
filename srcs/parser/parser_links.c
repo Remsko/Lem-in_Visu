@@ -6,38 +6,11 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 21:29:47 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/11/07 13:11:46 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/09 13:44:37 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
-
-t_bool			same_link(t_list *link, t_room *room)
-{
-	while (link != NULL)
-	{
-		if ((t_room*)link->content == room)
-			return (TRUE);
-		link = link->next;
-	}
-	return (FALSE);
-}
-
-static t_room	*find_room(t_list *room, char *name)
-{
-	t_room *tmp;
-
-	if (name == NULL)
-		return (NULL);
-	while (room != NULL)
-	{
-		tmp = (t_room *)room->content;
-		if (ft_strcmp(tmp->name, name) == 0)
-			return (tmp);
-		room = room->next;
-	}
-	return (NULL);
-}
 
 static t_bool	add_links(t_list **room, char *line)
 {

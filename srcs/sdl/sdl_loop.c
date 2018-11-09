@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:09:24 by marvin            #+#    #+#             */
-/*   Updated: 2018/11/09 10:11:21 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/09 13:55:41 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static inline float	lerp(float a, float b, float f)
 {
-    return (a + f * (b - a));
+	return (a + f * (b - a));
 }
 
 static int			anim_ants(t_list *run, float *delta_time, float *speed)
@@ -33,7 +33,7 @@ static int			anim_ants(t_list *run, float *delta_time, float *speed)
 	{
 		*delta_time = *delta_time < 0.0f ? 0.01f : 0.0f;
 		if (*speed == 0.0f)
-		sdl_wait(200);
+			sdl_wait(200);
 	}
 	*speed = 0.0f;
 	return (*delta_time == 0.0f ? 1 : 0);
@@ -56,21 +56,13 @@ void				sdl_loop(t_env *e, t_visual *v)
 			sdl_draw(e, v);
 			if (e->actual_run != NULL)
 			{
-				if (anim_ants((t_list *)e->actual_run->content, &delta_time, &speed))
+				if (anim_ants((t_list *)e->actual_run->content,
+							&delta_time, &speed))
 					e->actual_run = e->actual_run->next;
 			}
 			else
 				v->events.options.draw = FALSE;
 		}
-		if (v->events.keys[SDL_SCANCODE_RIGHT] == TRUE)
-		{
-			v->events.options.pause ^= v->events.options.pause & 1;
-			speed = 0.008f;
-		}
-		if (v->events.keys[SDL_SCANCODE_LEFT] == TRUE)
-		{
-			v->events.options.pause ^= v->events.options.pause & 1;
-			speed = -0.008f;
-		}
+		sdl_handle_event(v, &speed);
 	}
 }

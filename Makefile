@@ -10,6 +10,7 @@ SRC_PATH = srcs/
 SRC_NAME = main.c \
 			sdl/sdl_destroy.c \
 			sdl/sdl_event.c \
+			sdl/sdl_handle_event.c \
 			sdl/sdl_fps.c \
 			sdl/sdl_init.c \
 			sdl/sdl_loop.c \
@@ -20,11 +21,10 @@ SRC_NAME = main.c \
 			parser/parser_rooms.c \
 			parser/parser_links.c \
 			parser/parser_runs.c \
+			parser/parser_find.c \
 			del/garbage_collector.c \
 			del/del.c \
 			draw/draw_all.c \
-			draw/draw_circle.c \
-			draw/draw_line.c \
 			draw/draw_fill_circle.c \
 			norm/normalize_coord.c \
 
