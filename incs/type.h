@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:28:23 by marvin            #+#    #+#             */
-/*   Updated: 2018/11/08 17:35:03 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/09 09:54:19 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct			s_options
 {
 	t_bool				exit;
 	t_bool				draw;
+	t_bool				pause;
 }						t_options;
 
 typedef struct			s_events
