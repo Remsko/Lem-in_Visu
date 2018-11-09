@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:04:23 by marvin            #+#    #+#             */
-/*   Updated: 2018/11/09 09:56:20 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/09 10:09:54 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ void	sdl_event(t_events *e)
 			e->options.exit = TRUE;
 		else if (event.key.keysym.sym == SDLK_ESCAPE)
 			e->options.exit = TRUE;
-		
-		else if (event.key.keysym.sym == SDLK_SPACE)
+		else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_SPACE)
 			e->options.pause ^= 1;
 		else
 			e->keys = SDL_GetKeyboardState(NULL);

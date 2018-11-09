@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:09:24 by marvin            #+#    #+#             */
-/*   Updated: 2018/11/09 09:55:24 by rpinoit          ###   ########.fr       */
+/*   Updated: 2018/11/09 10:11:21 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,14 @@ void				sdl_loop(t_env *e, t_visual *v)
 				v->events.options.draw = FALSE;
 		}
 		if (v->events.keys[SDL_SCANCODE_RIGHT] == TRUE)
+		{
+			v->events.options.pause ^= v->events.options.pause & 1;
 			speed = 0.008f;
+		}
 		if (v->events.keys[SDL_SCANCODE_LEFT] == TRUE)
+		{
+			v->events.options.pause ^= v->events.options.pause & 1;
 			speed = -0.008f;
+		}
 	}
 }
