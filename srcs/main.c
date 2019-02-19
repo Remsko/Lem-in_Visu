@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:11:32 by marvin            #+#    #+#             */
-/*   Updated: 2018/11/09 10:38:10 by rpinoit          ###   ########.fr       */
+/*   Updated: 2019/02/19 13:52:17 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int			main(int ac, char **av)
 	t_env		e;
 
 	(void)av;
-	ft_bzero(&e, sizeof(t_env));
-	ft_bzero(&v, sizeof(t_visual));
+	ft_bzero((void *)&e, sizeof(t_env));
+	ft_bzero((void *)&v, sizeof(t_visual));
 	v.screen.width = WIN_W;
 	v.screen.height = WIN_H;
 	if (ac == 1)

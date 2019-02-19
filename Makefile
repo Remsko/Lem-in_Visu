@@ -1,72 +1,125 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/02/19 12:55:23 by rpinoit           #+#    #+#              #
+#    Updated: 2019/02/19 13:07:45 by rpinoit          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = visu
+RM = rm -rf
+
+#==============================================================================#
+#------------------------------------------------------------------------------#
+#                                  HEADERS                                     #
+
+INC_PATH += ./incs
+
+INC_NAME += proto.h
+INC_NAME += type.h
+INC_NAME += visu.h
+
+INC = $(addprefix $(INC_PATH)/, $(INC_NAME))
+
+#==============================================================================#
+#------------------------------------------------------------------------------#
+#                            COMPILER & FLAGS                                  #
 
 CC = gcc
-RM = rm -rf
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -Wall -Werror -Wextra
+CPPFLAGS = $(addprefix -I, $(INC_PATH))
 
-LIBFT = libft/libft.a
+#==============================================================================#
+#------------------------------------------------------------------------------#
+#                                  SOURCES                                     #
 
-SRC_PATH = srcs/
-SRC_NAME = main.c \
-			sdl/sdl_destroy.c \
-			sdl/sdl_event.c \
-			sdl/sdl_handle_event.c \
-			sdl/sdl_fps.c \
-			sdl/sdl_init.c \
-			sdl/sdl_loop.c \
-			sdl/sdl_draw.c \
-			sdl/sdl_utils.c \
-			parser/parser_entry.c \
-			parser/parser_ants.c \
-			parser/parser_rooms.c \
-			parser/parser_links.c \
-			parser/parser_runs.c \
-			parser/parser_find.c \
-			del/garbage_collector.c \
-			del/del.c \
-			draw/draw_all.c \
-			draw/draw_fill_circle.c \
-			norm/normalize_coord.c \
+SRC_PATH = ./srcs/
+SRC_NAME += main.c
 
-SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
+SRC_SUB += sdl
+SRC_NAME += sdl_destroy.c
+SRC_NAME += sdl_event.c
+SRC_NAME += sdl_handle_event.c
+SRC_NAME += sdl_fps.c
+SRC_NAME += sdl_init.c
+SRC_NAME += sdl_loop.c
+SRC_NAME += sdl_draw.c
+SRC_NAME += sdl_utils.c
 
-OBJ_PATH = obj/
-OBJ_NAME = $(SRC_NAME:.c=.o)
+SRC_SUB += parser
+SRC_NAME += parser_entry.c
+SRC_NAME += parser_ants.c
+SRC_NAME += parser_rooms.c
+SRC_NAME += parser_links.c
+SRC_NAME += parser_runs.c
+SRC_NAME += parser_find.c
 
-OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
+SRC_SUB += del
+SRC_NAME += garbage_collector.c
+SRC_NAME += del.c
 
-CPPFLAGS = -Iincs -Ilibft -I ~/.brew/include/SDL2
-LDLIBS = -Llibft -L ~/.brew/lib
-LDFLAGS = -lft -lSDL2
+SRC_SUB += draw
+SRC_NAME += draw_all.c
+SRC_NAME += draw_fill_circle.c
+
+SRC_SUB += norm
+SRC_NAME += normalize_coord.c
+
+vpath %.c $(SRC_PATH) $(addprefix $(SRC_PATH)/, $(SRC_SUB))
+
+#==============================================================================#
+#------------------------------------------------------------------------------#
+#                                  OBJECTS                                     #
+
+OBJ_PATH = .obj
+OBJ_NAME = $(SRC_NAME:%.c=%.o)
+OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME)) 
+
+#==============================================================================#
+#------------------------------------------------------------------------------#
+#                                LIBRARIES                                     #
+
+LIBFT_PATH = ./libft
+LIBFT = $(LIBFT_PATH)/libft.a
+CPPFLAGS += -I$(LIBFT_PATH)
+LDFLAGS += -L$(LIBFT_PATH) -lft
+
+CPPFLAGS += `sdl2-config --cflags --libs`
+LDFLAGS += -lSDL2
+
+LFLAGS += -lm
+
+#==============================================================================#
+#------------------------------------------------------------------------------#
+#                                 RULES                                        #
 
 all: $(NAME)
 
-$(LIBFT):
-	make -C libft
+$(NAME): $(OBJ) | $(LIBFT)
+	$(CC) -o $@ $^ $(LDFLAGS)
 
-$(OBJ_PATH):
-	mkdir -p $(OBJ_PATH)
-	mkdir -p $(OBJ_PATH)sdl
-	mkdir -p $(OBJ_PATH)parser
-	mkdir -p $(OBJ_PATH)del
-	mkdir -p $(OBJ_PATH)draw
-	mkdir -p $(OBJ_PATH)norm
-
-$(NAME): $(LIBFT) $(OBJ_PATH) $(OBJ)
-	$(CC) $(LDFLAGS) $(LDLIBS) $(OBJ) -o $(NAME)
-
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+$(OBJ): $(INC) | $(OBJ_PATH)
+$(OBJ): $(OBJ_PATH)/%.o: %.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
+$(OBJ_PATH):
+	mkdir -p $@
+
+$(LIBFT):
+	make -C $(LIBFT_PATH)
+
 clean:
-	make clean -C libft
-	$(RM) $(OBJ)
 	$(RM) $(OBJ_PATH)
+	make -C $(LIBFT_PATH) clean
 
 fclean: clean
-	$(RM) $(LIBFT)
 	$(RM) $(NAME)
+	$(RM) $(LIBFT)
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re
+.PHONY: all clean fclean re

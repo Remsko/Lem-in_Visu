@@ -6,7 +6,7 @@
 /*   By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 20:28:04 by rpinoit           #+#    #+#             */
-/*   Updated: 2018/08/17 15:28:03 by rpinoit          ###   ########.fr       */
+/*   Updated: 2019/02/19 13:51:07 by rpinoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static t_room		init_room(char *split, t_coord pos, t_room_type type)
 {
 	t_room room;
 
+	room.links = NULL;
 	room.name = ft_strdup(split);
 	room.pos = pos;
 	room.type = type;
