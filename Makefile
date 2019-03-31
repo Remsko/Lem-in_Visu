@@ -6,7 +6,7 @@
 #    By: rpinoit <rpinoit@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/19 12:55:23 by rpinoit           #+#    #+#              #
-#    Updated: 2019/02/19 13:07:45 by rpinoit          ###   ########.fr        #
+#    Updated: 2019/03/31 13:20:38 by rpinoit          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ CPPFLAGS = $(addprefix -I, $(INC_PATH))
 #------------------------------------------------------------------------------#
 #                                  SOURCES                                     #
 
-SRC_PATH = ./srcs/
+SRC_PATH = ./srcs
 SRC_NAME += main.c
 
 SRC_SUB += sdl
@@ -88,8 +88,8 @@ LIBFT = $(LIBFT_PATH)/libft.a
 CPPFLAGS += -I$(LIBFT_PATH)
 LDFLAGS += -L$(LIBFT_PATH) -lft
 
-CPPFLAGS += `sdl2-config --cflags --libs`
-LDFLAGS += -lSDL2
+CPPFLAGS += `sdl2-config --cflags`
+LDFLAGS += `sdl2-config --libs`
 
 LFLAGS += -lm
 
